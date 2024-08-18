@@ -1,0 +1,1 @@
+export const productSearchableFields = ['searchTerm', 'sort', 'limit', 'page', 'fields'];
