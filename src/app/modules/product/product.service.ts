@@ -19,7 +19,12 @@ const getAllProductsFromDB = async (query: Record<string, unknown>) => {
 
   const result = await productQuery.modelQuery;
 
-  return result;
+    // Fetch the total count without applying pagination
+    const totalCount = await Product.countDocuments(
+      new QueryBuilder(Product.find(), query).search(productSearchableFields).filter().query
+    );
+
+  return { result, totalCount };
 };
 
 const getSingleProductsFromDB = async (id: string) => {
