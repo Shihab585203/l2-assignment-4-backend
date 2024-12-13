@@ -10,7 +10,7 @@ const moduleRoutes = [
     route: ProductRoutes,
   },
   {
-    path: "/payment",
+    path: "/create-payment-intent",
     route: PaymentRoutes,
   },
 ];
