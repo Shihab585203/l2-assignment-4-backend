@@ -13,8 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^22.10.2",
+    "@types/stripe": "^8.0.416",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
+    "dotenv": "^16.4.7",
     "express": "^4.19.2",
     "http-status": "^1.7.4",
     "mongodb": "^6.8.0",

@@ -12,7 +12,7 @@ const createPaymentIntent = async (req: Request, res: Response) => {
       });
     }
 
-    const clientSecret = paymentServices.createPaymentIntent(price);
+    const clientSecret = await paymentServices.createPaymentIntent(price);
 
     res.status(200).json({
       success: true,
