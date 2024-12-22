@@ -4,6 +4,7 @@ import { paymentServices } from "./payment.service";
 const createPaymentIntent = async (req: Request, res: Response) => {
   try {
     const { price } = req.body;
+    console.log(price)
 
     if (!price) {
       return res.status(400).json({

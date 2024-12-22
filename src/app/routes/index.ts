@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { ProductRoutes } from "../modules/product/product.route";
-import { PaymentRoutes } from "../modules/payment/payment.route";
+import { paymentRoutes } from "../modules/payment/payment.route";
 
 const router = Router();
 
@@ -11,7 +11,7 @@ const moduleRoutes = [
   },
   {
     path: "/create-payment-intent",
-    route: PaymentRoutes,
+    route: paymentRoutes,
   },
 ];
 

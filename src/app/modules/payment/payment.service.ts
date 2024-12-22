@@ -7,7 +7,9 @@ if (!stripeSecretKey) {
   throw new Error("Stripe Secret Key is not Defined");
 }
 
-const stripe = new Stripe(stripeSecretKey);
+const stripe = new Stripe(stripeSecretKey, {
+    apiVersion: "2023-10-16" 
+  });
 
 const createPaymentIntent = async (price: number) => {
   const amount = Math.round(price * 100);
