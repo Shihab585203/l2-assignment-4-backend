@@ -22,9 +22,33 @@ const StoreCartProduct = async (req: Request, res: Response) => {
     res.status(400).json({
       success: false,
       message: "Cart Product Storing Failed!",
+      data: err
     });
   }
 };
+
+const deleteProductCart = async (req: Request, res: Response) => {
+try {
+  
+  const { id } = req.params;
+
+  const result = await CartProductServices.deleteProductCartFromDB(id);
+
+  res.status(200).json({
+    success: true,
+    message: 'Delete Cart Product Data Successfully',
+    data: result
+  })
+} catch (err) {
+  res.status(400).json({
+    success: false,
+    message: 'Failed to delete Cart Product Data',
+    data: err
+  })
+}
+
+
+}
 
 
 export const CartProductController = {
