@@ -22,35 +22,52 @@ const StoreCartProduct = async (req: Request, res: Response) => {
     res.status(400).json({
       success: false,
       message: "Cart Product Storing Failed!",
-      data: err
+      data: err,
     });
   }
 };
 
-const deleteProductCart = async (req: Request, res: Response) => {
-try {
-  
-  const { id } = req.params;
-
-  const result = await CartProductServices.deleteProductCartFromDB(id);
+const getAllProductCartData = async (req: Request, res: Response) => {
+  try {
+    const result = await CartProductServices.getAllProductCartData();
 
   res.status(200).json({
     success: true,
-    message: 'Delete Cart Product Data Successfully',
+    message: "All Cart Products has gotten Successfully.",
     data: result
   })
-} catch (err) {
-  res.status(400).json({
-    success: false,
-    message: 'Failed to delete Cart Product Data',
-    data: err
-  })
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      message: "Failed to get All Cart Products data",
+      data: err
+    })
+  }
 }
 
+const deleteProductCart = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    
 
-}
+    const result = await CartProductServices.deleteProductCartFromDB(id);
 
+    res.status(200).json({
+      success: true,
+      message: "Delete Cart Product Data Successfully",
+      data: result,
+    });
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      message: "Failed to delete Cart Product Data",
+      data: err,
+    });
+  }
+};
 
 export const CartProductController = {
-    StoreCartProduct
-}
+  StoreCartProduct,
+  getAllProductCartData,
+  deleteProductCart,
+};

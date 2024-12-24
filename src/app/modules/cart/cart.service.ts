@@ -7,14 +7,16 @@ const storeProductCartIntoDB = async (payload: TCartProduct) => {
   return result;
 };
 
+const getAllProductCartData = async () => {
+  const result = CartProduct.find();
+
+  return result;
+};
+
 const deleteProductCartFromDB = async (id: string) => {
   try {
-    const deleteProductCart = await CartProduct.findOneAndUpdate(
-      { id },
-      { isDeleted: true },
-      { new: true }
-    );
-    if (deleteProductCart) {
+    const deleteProductCart = await CartProduct.findByIdAndDelete(id);
+    if (!deleteProductCart) {
       throw new Error("Failed to Delete Cart Product");
     }
 
@@ -26,5 +28,6 @@ const deleteProductCartFromDB = async (id: string) => {
 
 export const CartProductServices = {
   storeProductCartIntoDB,
-  deleteProductCartFromDB
+  getAllProductCartData,
+  deleteProductCartFromDB,
 };
