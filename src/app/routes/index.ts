@@ -11,7 +11,7 @@ const moduleRoutes = [
     route: ProductRoutes,
   },
   {
-    path: "/create-payment-intent",
+    path: "/payment",
     route: paymentRoutes,
   },
   {
