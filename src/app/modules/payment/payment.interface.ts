@@ -7,4 +7,5 @@ export interface TPaymentData {
     date: Date;
     cartIds: string[];
     status: 'pending' | 'completed' | "failed",
+    paymentMethod: string;
 }

@@ -49,7 +49,6 @@ const deleteProductCart = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     
-
     const result = await CartProductServices.deleteProductCartFromDB(id);
 
     res.status(200).json({

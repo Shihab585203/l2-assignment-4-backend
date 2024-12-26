@@ -23,6 +23,7 @@ const createPaymentData = async (payload: TPaymentData) => {
         $in: payload.cartIds.map((id) => new ObjectId(id)),
       },
     };
+    console.log("cartIds: ", query);
     await CartProduct.deleteMany(query);
   }
 

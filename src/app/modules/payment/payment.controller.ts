@@ -6,9 +6,9 @@ const createPaymentData = async(req: Request, res: Response) => {
   try {
     const payment = req.body;
 
-    const zodParsedData = PaymentDataValidations.CreatePaymentDataValidationSchema.parse(payment)
+    // const zodParsedData = PaymentDataValidations.CreatePaymentDataValidationSchema.parse(payment)
 
-    const paymentResult = await paymentServices.createPaymentData(zodParsedData);
+    const paymentResult = await paymentServices.createPaymentData(payment);
 
     res.status(200).json({
       success: true,
