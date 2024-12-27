@@ -13,6 +13,7 @@ const ProductSchema = new Schema<TProduct>({
   stockQuantity: {
     type: Number,
     required: true,
+    default: 0,
   },
   brand: {
     type: String,
@@ -34,6 +35,9 @@ const ProductSchema = new Schema<TProduct>({
     type: String,
     required: true,
   },
+}, 
+{
+  timestamps: true,
 });
 
 export const Product = model<TProduct>("Product", ProductSchema);

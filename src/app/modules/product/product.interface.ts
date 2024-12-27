@@ -7,4 +7,5 @@ export type TProduct = {
     description: string;
     price: number;
     image: string;
+    createdAt: Date;
   };

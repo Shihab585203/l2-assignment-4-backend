@@ -9,6 +9,7 @@ const createProductValidationSchema = z.object({
   description: z.string(),
   price: z.number(),
   image: z.string(),
+  createdAt: z.date(),
 });
 
 export const ProductValidations = {

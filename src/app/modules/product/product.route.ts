@@ -7,6 +7,8 @@ router.post("/create-product", ProductController.createProduct);
 
 router.get("/", ProductController.getAllProducts);
 
+router.get('/categories', ProductController.getCategories);
+
 router.get("/:id", ProductController.getSingleProduct);
 
 export const ProductRoutes = router;

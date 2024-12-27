@@ -28,7 +28,15 @@ const createProduct = async (req: Request, res: Response) => {
 //Get All Products
 const getAllProducts = async (req: Request, res: Response) => {
   try {
-    const result = await ProductServices.getAllProductsFromDB(req.query);
+
+    const { searchTerm, category, page, limit } = req.query;
+
+    const result = await ProductServices.getAllProductsFromDB(
+      searchTerm as string,
+      category as string,
+      Number(page),
+      Number(limit)
+    );
 
     res.status(200).json({
       success: true,
@@ -57,8 +65,27 @@ const getSingleProduct = async (req: Request, res: Response) => {
   }
 };
 
+//Get All Categories from All Products
+const getCategories = async ( _req: Request, res: Response) => {
+  try {
+    const result = await ProductServices.getCategoriesFromDB();
+
+    res.status(200).json({
+      success: true,
+      message: "All Categories retrieve Successfully",
+      data: result
+    })
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      message: "All Categories getting Failed!",
+    })
+  }
+}
+
 export const ProductController = {
   createProduct,
   getAllProducts,
   getSingleProduct,
+  getCategories
 };
