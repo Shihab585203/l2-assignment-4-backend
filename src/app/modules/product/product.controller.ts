@@ -29,13 +29,14 @@ const createProduct = async (req: Request, res: Response) => {
 const getAllProducts = async (req: Request, res: Response) => {
   try {
 
-    const { searchTerm, category, page, limit } = req.query;
+    const { searchTerm, category, page, limit, sort } = req.query;
 
     const result = await ProductServices.getAllProductsFromDB(
       searchTerm as string,
       category as string,
       Number(page),
-      Number(limit)
+      Number(limit),
+      sort as string,
     );
 
     res.status(200).json({
