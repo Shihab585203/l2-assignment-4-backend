@@ -28,7 +28,6 @@ const createProduct = async (req: Request, res: Response) => {
 //Get All Products
 const getAllProducts = async (req: Request, res: Response) => {
   try {
-
     const { searchTerm, category, page, limit, sort } = req.query;
 
     const result = await ProductServices.getAllProductsFromDB(
@@ -36,7 +35,7 @@ const getAllProducts = async (req: Request, res: Response) => {
       category as string,
       Number(page),
       Number(limit),
-      sort as string,
+      sort as string
     );
 
     res.status(200).json({
@@ -67,29 +66,73 @@ const getSingleProduct = async (req: Request, res: Response) => {
 };
 
 //Get All Categories from All Products
-const getCategories = async ( _req: Request, res: Response) => {
+const getCategories = async (_req: Request, res: Response) => {
   try {
     const result = await ProductServices.getCategoriesFromDB();
 
     res.status(200).json({
       success: true,
       message: "All Categories retrieve Successfully",
-      data: result
-    })
+      data: result,
+    });
   } catch (err) {
     res.status(400).json({
       success: false,
       message: "All Categories getting Failed!",
-    })
+    });
   }
-}
+};
 
+//Update Product
 
-//
+const updateProduct = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const updateProductData = req.body;
+
+    const result = await ProductServices.updateProductFromDB(
+      id,
+      updateProductData
+    );
+
+    res.status(200).json({
+      success: true,
+      message: "Product Updated Successfully",
+      data: result,
+    });
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      message: "Failed to Update Product",
+      data: err,
+    });
+  }
+};
+
+//Delete Product from Database
+const deleteProduct = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const result = ProductServices.deleteProductFromDB(id);
+
+    res.status(200).json({
+      success: true,
+      message: "Product Deleted Successfully",
+      data: result,
+    });
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      message: "Failed to Delete Product",
+    });
+  }
+};
 
 export const ProductController = {
   createProduct,
   getAllProducts,
   getSingleProduct,
-  getCategories
+  getCategories,
+  updateProduct,
+  deleteProduct,
 };

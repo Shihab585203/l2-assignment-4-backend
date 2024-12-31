@@ -11,4 +11,8 @@ router.get('/categories', ProductController.getCategories);
 
 router.get("/:id", ProductController.getSingleProduct);
 
+router.delete("/delete-product/:id", ProductController.deleteProduct);
+
+router.patch("/update-product/:id", ProductController.updateProduct);
+
 export const ProductRoutes = router;
