@@ -7,10 +7,10 @@ const createProduct = async (req: Request, res: Response) => {
   try {
     const product = req.body;
 
-    const zodParsedData =
-      ProductValidations.createProductValidationSchema.parse(product);
+    // const zodParsedData =
+    //   ProductValidations.createProductValidationSchema.parse(product);
 
-    const result = await ProductServices.createProductIntoDB(zodParsedData);
+    const result = await ProductServices.createProductIntoDB(product);
 
     res.status(200).json({
       success: true,
@@ -83,6 +83,9 @@ const getCategories = async ( _req: Request, res: Response) => {
     })
   }
 }
+
+
+//
 
 export const ProductController = {
   createProduct,
