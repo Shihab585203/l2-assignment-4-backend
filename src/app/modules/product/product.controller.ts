@@ -1,14 +1,10 @@
 import { Request, Response } from "express";
 import { ProductServices } from "./product.service";
-import { ProductValidations } from "./product.validation";
 
 //Post a Product
 const createProduct = async (req: Request, res: Response) => {
   try {
     const product = req.body;
-
-    // const zodParsedData =
-    //   ProductValidations.createProductValidationSchema.parse(product);
 
     const result = await ProductServices.createProductIntoDB(product);
 

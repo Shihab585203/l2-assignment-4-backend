@@ -1,5 +1,3 @@
-import QueryBuilder from "../../builder/QueryBuilder";
-import { productSearchableFields } from "./product.constant";
 import { TProduct } from "./product.interface";
 import { Product } from "./product.modal";
 
@@ -56,26 +54,6 @@ const getAllProductsFromDB = async (
     .sort(sortConfig);
 
   const total = await Product.countDocuments(query);
-
-  // const filter: {[key: string]: any} = {};
-
-  // if(query.category){
-  //   filter.category = query.category
-  // }
-
-  // const productQuery = new QueryBuilder(Product.find(filter), query)
-  //   .search(productSearchableFields)
-  //   .filter()
-  //   .sort()
-  //   .paginate()
-  //   .fields();
-
-  // const result = await productQuery.modelQuery;
-
-  // Fetch the total count without applying pagination
-  // const totalCount = await Product.countDocuments(
-  //   new QueryBuilder(Product.find(filter), query).search(productSearchableFields).filter().query
-  // );
 
   return {
     result: products,
